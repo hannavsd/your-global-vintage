@@ -5,6 +5,29 @@ const Contact = () => {
   const [selectedForm, setSelectedForm] = useState("buyer");
   const [formSent, setFormSent] = useState(false);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+
+    try {
+      const response = await fetch("https://formsubmit.co/yourglobalvintage@gmail.com", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        setFormSent(true);
+        e.target.reset();
+      } else {
+        alert("Failed to send form. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("There was an error sending the form.");
+    }
+  };
+
   return (
     <div className="contact-container">
       <h1>Contact Us</h1>
@@ -32,13 +55,7 @@ const Contact = () => {
 
       {/* Buyer Form */}
       {selectedForm === "buyer" && !formSent && (
-        <form
-          className="contact-form"
-          action="https://formsubmit.co/yourglobalvintage@gmail.com"
-          method="POST"
-          encType="multipart/form-data"
-        >
-          {/* FormSubmit options */}
+        <form className="contact-form" onSubmit={handleSubmit}>
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_subject" value="New message from Your Global Vintage buyer!" />
           <input type="hidden" name="_template" value="box" />
