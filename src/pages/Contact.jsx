@@ -8,7 +8,13 @@ const Contact = () => {
 
   useEffect(() => {
     const userLang = navigator.language || navigator.userLanguage;
-    setLang(userLang.startsWith("no") ? "no" : "en");
+    if (userLang.startsWith("no")) {
+      setLang("no");
+    } else if (userLang.startsWith("en")) {
+      setLang("en");
+    } else {
+      setLang("en"); // fallback
+    }
   }, []);
 
   const handleSubmit = (e) => {
@@ -70,6 +76,7 @@ const Contact = () => {
 
       <div className="form-toggle">
         <button
+          type="button"
           className={selectedForm === "buyer" ? "active" : ""}
           onClick={() => {
             setSelectedForm("buyer");
@@ -79,6 +86,7 @@ const Contact = () => {
           {t.buyer}
         </button>
         <button
+          type="button"
           className={selectedForm === "seller" ? "active" : ""}
           onClick={() => {
             setSelectedForm("seller");
@@ -106,22 +114,18 @@ const Contact = () => {
           />
           <input type="hidden" name="_template" value="box" />
 
-          <label>
-            {t.name}:
-            <input type="text" name="name" required />
-          </label>
-          <label>
-            {t.email}:
-            <input type="email" name="email" required />
-          </label>
-          <label>
-            {t.message}:
-            <textarea name="message" rows={4} required></textarea>
-          </label>
-          <label>
-            {t.upload}:
-            <input type="file" name="attachment" />
-          </label>
+          <label htmlFor="name">{t.name}:</label>
+          <input id="name" type="text" name="name" required />
+
+          <label htmlFor="email">{t.email}:</label>
+          <input id="email" type="email" name="email" required />
+
+          <label htmlFor="message">{t.message}:</label>
+          <textarea id="message" name="message" rows={4} required></textarea>
+
+          <label htmlFor="attachment">{t.upload}:</label>
+          <input id="attachment" type="file" name="attachment" />
+
           <button type="submit">{t.send}</button>
         </form>
       )}
