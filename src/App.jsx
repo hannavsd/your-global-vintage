@@ -9,9 +9,23 @@ import Account from './pages/Account';
 import Checkout from './pages/Checkout';
 import './App.css';
 
+import { useTranslation } from 'react-i18next';
+
+// Helper component to update <html lang="...">
+const SetHtmlLang = () => {
+  const { i18n } = useTranslation();
+
+  React.useEffect(() => {
+    document.documentElement.lang = i18n.language;
+  }, [i18n.language]);
+
+  return null;
+};
+
 function App() {
   return (
     <>
+      <SetHtmlLang />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

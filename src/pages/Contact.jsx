@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./Contact.css";
 
 const Contact = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [selectedForm, setSelectedForm] = useState("buyer");
   const [formSent, setFormSent] = useState(false);
-
-  useEffect(() => {
-    // Set HTML lang attribute to match selected language
-    document.documentElement.lang = i18n.language;
-  }, [i18n.language]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -19,7 +14,7 @@ const Contact = () => {
     const formData = new FormData(form);
 
     try {
-      const response = await fetch("https://formspree.io/f/xoqgjjvd", {
+      const response = await fetch("https://formspree.io/f/xovwejpq", {
         method: "POST",
         body: formData,
         headers: {
