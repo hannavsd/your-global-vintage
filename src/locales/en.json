@@ -14,6 +14,7 @@
     "message": "Message",
     "upload": "Optional File Upload",
     "send": "Send",
+    "sending": "Sending...",
     "thankYou": "Thank you!",
     "thankMsg": "We have received your message and will get back to you as soon as we can.",
     "sellerComing": "Seller contact form coming soon!",
@@ -21,4 +22,3 @@
     "errorSubmission": "There was an error."
   }
 }
-

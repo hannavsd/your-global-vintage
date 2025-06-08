@@ -4,11 +4,13 @@ import "./Contact.css";
 
 const Contact = () => {
   const { t } = useTranslation();
-  const [selectedForm, setSelectedForm] = useState("buyer");
   const [formSent, setFormSent] = useState(false);
+  const [activeForm, setActiveForm] = useState("buyer");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsSubmitting(true);
 
     const form = event.target;
     const formData = new FormData(form);
@@ -30,63 +32,59 @@ const Contact = () => {
       }
     } catch (error) {
       alert(t("contactForm.errorSubmission"));
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="contact-container">
-      <h1>{t("contactForm.title")}</h1>
+    <div className="contact-form-container">
+      <h2>{t("contactForm.title")}</h2>
 
       <div className="contact-toggle">
         <button
-          type="button"
-          className={selectedForm === "buyer" ? "active" : ""}
-          onClick={() => {
-            setSelectedForm("buyer");
-            setFormSent(false);
-          }}
+          className={activeForm === "buyer" ? "active" : ""}
+          onClick={() => setActiveForm("buyer")}
         >
           {t("contactForm.buyer")}
         </button>
         <button
-          type="button"
-          className={selectedForm === "seller" ? "active" : ""}
-          onClick={() => {
-            setSelectedForm("seller");
-            setFormSent(false);
-          }}
+          className={activeForm === "seller" ? "active" : ""}
+          onClick={() => setActiveForm("seller")}
         >
           {t("contactForm.seller")}
         </button>
       </div>
 
-      {selectedForm === "buyer" && !formSent && (
-        <form onSubmit={handleSubmit} className="contact-form">
-          <label htmlFor="name">{t("contactForm.name")}:</label>
-          <input type="text" id="name" name="name" required />
-
-          <label htmlFor="email">{t("contactForm.email")}:</label>
-          <input type="email" id="email" name="email" required />
-
-          <label htmlFor="message">{t("contactForm.message")}:</label>
-          <textarea id="message" name="message" required></textarea>
-
-          <label htmlFor="file">{t("contactForm.upload")}:</label>
-          <input type="file" id="file" name="file" />
-
-          <button type="submit">{t("contactForm.send")}</button>
-        </form>
-      )}
-
-      {selectedForm === "seller" && !formSent && (
-        <p className="coming-soon">{t("contactForm.sellerComing")}</p>
-      )}
-
-      {formSent && (
-        <div className="thank-you-message">
-          <h2>{t("contactForm.thankYou")}</h2>
+      {formSent ? (
+        <div>
+          <h3>{t("contactForm.thankYou")}</h3>
           <p>{t("contactForm.thankMsg")}</p>
         </div>
+      ) : (
+        <>
+          {activeForm === "buyer" ? (
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="name">{t("contactForm.name")}</label>
+              <input type="text" id="name" name="name" required />
+
+              <label htmlFor="email">{t("contactForm.email")}</label>
+              <input type="email" id="email" name="email" required />
+
+              <label htmlFor="message">{t("contactForm.message")}</label>
+              <textarea id="message" name="message" required />
+
+              <label htmlFor="file">{t("contactForm.upload")}</label>
+              <input type="file" id="file" name="file" />
+
+              <button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? t("contactForm.sending") : t("contactForm.send")}
+              </button>
+            </form>
+          ) : (
+            <p>{t("contactForm.sellerComing")}</p>
+          )}
+        </>
       )}
     </div>
   );

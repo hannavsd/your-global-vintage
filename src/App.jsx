@@ -7,20 +7,8 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Account from './pages/Account';
 import Checkout from './pages/Checkout';
+import SetHtmlLang from './SetHtmlLang';
 import './App.css';
-
-import { useTranslation } from 'react-i18next';
-
-// Helper component to update <html lang="...">
-const SetHtmlLang = () => {
-  const { i18n } = useTranslation();
-
-  React.useEffect(() => {
-    document.documentElement.lang = i18n.language;
-  }, [i18n.language]);
-
-  return null;
-};
 
 function App() {
   return (

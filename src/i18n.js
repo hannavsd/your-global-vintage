@@ -18,8 +18,8 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'en', // default language
-    fallbackLng: 'en', // fallback if translation not found
+    lng: 'no', // ✅ Norwegian is now default
+    fallbackLng: 'no', // ✅ Fallback is also Norwegian
     interpolation: {
       escapeValue: false,
     },
