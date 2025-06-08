@@ -37,7 +37,6 @@ const Contact = () => {
           action="https://formsubmit.co/yourglobalvintage@gmail.com"
           method="POST"
           encType="multipart/form-data"
-          onSubmit={() => setFormSent(true)}
         >
           {/* FormSubmit options */}
           <input type="hidden" name="_captcha" value="false" />
