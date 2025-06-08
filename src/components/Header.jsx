@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <header className="header">
-      <h1 className="logo">{t('globalVintage')}</h1>
+      <h1 className="logo">Your Global Vintage</h1>
       <nav className="nav-links">
         <Link to="/">{t('home')}</Link>
         <Link to="/shop">{t('shop')}</Link>
