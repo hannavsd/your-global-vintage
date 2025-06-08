@@ -1,0 +1,18 @@
+.home-page {
+  padding: 2rem;
+  text-align: center;
+  background-color: #fff0f5;
+  border-radius: 12px;
+  margin: 2rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.home-page h2 {
+  font-size: 2rem;
+  color: #c71585;
+}
+
+.home-page p {
+  font-size: 1.2rem;
+  color: #333;
+}
