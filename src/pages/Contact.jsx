@@ -8,11 +8,7 @@ const Contact = () => {
 
   useEffect(() => {
     const userLang = navigator.language || navigator.userLanguage;
-    if (userLang.startsWith("no")) {
-      setLang("no");
-    } else {
-      setLang("en");
-    }
+    setLang(userLang.startsWith("no") ? "no" : "en");
   }, []);
 
   const handleSubmit = (e) => {
@@ -58,8 +54,92 @@ const Contact = () => {
       name: "Navn",
       email: "E-post",
       message: "Melding",
-      upload: "Valgfritt filopplastning",
+      upload: "Valgfri filopplasting",
       send: "Send",
       thankYou: "Takk!",
       thankMsg: "Vi har mottatt meldingen din og vil kontakte deg så snart vi kan.",
+      sellerComing: "Selgerskjema kommer snart!",
+    },
+  };
 
+  const t = text[lang];
+
+  return (
+    <div className="contact-container">
+      <h1>{t.title}</h1>
+
+      <div className="form-toggle">
+        <button
+          className={selectedForm === "buyer" ? "active" : ""}
+          onClick={() => {
+            setSelectedForm("buyer");
+            setFormSent(false);
+          }}
+        >
+          {t.buyer}
+        </button>
+        <button
+          className={selectedForm === "seller" ? "active" : ""}
+          onClick={() => {
+            setSelectedForm("seller");
+            setFormSent(false);
+          }}
+        >
+          {t.seller}
+        </button>
+      </div>
+
+      {selectedForm === "buyer" && !formSent && (
+        <form
+          className="contact-form"
+          action="https://formsubmit.co/yourglobalvintage@gmail.com"
+          method="POST"
+          onSubmit={handleSubmit}
+          encType="multipart/form-data"
+        >
+          {/* FormSubmit options */}
+          <input type="hidden" name="_captcha" value="false" />
+          <input
+            type="hidden"
+            name="_subject"
+            value="New message from Your Global Vintage buyer!"
+          />
+          <input type="hidden" name="_template" value="box" />
+
+          <label>
+            {t.name}:
+            <input type="text" name="name" required />
+          </label>
+          <label>
+            {t.email}:
+            <input type="email" name="email" required />
+          </label>
+          <label>
+            {t.message}:
+            <textarea name="message" rows={4} required></textarea>
+          </label>
+          <label>
+            {t.upload}:
+            <input type="file" name="attachment" />
+          </label>
+          <button type="submit">{t.send}</button>
+        </form>
+      )}
+
+      {formSent && (
+        <div className="thank-you-message">
+          <h2>{t.thankYou}</h2>
+          <p>{t.thankMsg}</p>
+        </div>
+      )}
+
+      {selectedForm === "seller" && (
+        <div className="seller-info">
+          <p>{t.sellerComing}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Contact;
