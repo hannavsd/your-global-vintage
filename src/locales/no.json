@@ -5,5 +5,20 @@
   "about": "Om oss",
   "contact": "Kontakt",
   "account": "Min konto",
-  "checkout": "Kjøp"
+  "checkout": "Kjøp",
+  "contactForm": {
+    "title": "Kontakt Oss",
+    "buyer": "Kjøper",
+    "seller": "Selger",
+    "name": "Navn",
+    "email": "E-post",
+    "message": "Melding",
+    "upload": "Valgfri filopplasting",
+    "send": "Send",
+    "thankYou": "Takk!",
+    "thankMsg": "Vi har mottatt meldingen din og vil kontakte deg så snart vi kan.",
+    "sellerComing": "Selgerskjema kommer snart!",
+    "error": "Noe gikk galt.",
+    "errorSubmission": "Feil ved innsending."
+  }
 }
