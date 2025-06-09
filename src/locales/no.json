@@ -21,5 +21,19 @@
     "sellerComing": "Selgerskjema kommer snart!",
     "error": "Noe gikk galt.",
     "errorSubmission": "Feil ved innsending."
+  },
+  "cart": {
+    "title": "Handlekurv",
+    "empty": "Handlekurven din er tom.",
+    "total": "Totalt",
+    "name": "Navn",
+    "phone": "Telefonnummer",
+    "email": "E-post",
+    "address": "Leveringsadresse",
+    "buyWithPaypal": "Kjøp med PayPal",
+    "buyWithVipps": "Kjøp med Vipps",
+    "thankYouMsg": "Tusen takk for at du handler med oss! Sjekk e-posten din for mer informasjon.",
+    "choosePayment": "Velg betalingsmåte"
   }
 }
+

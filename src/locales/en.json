@@ -4,6 +4,7 @@
   "shop": "Shop",
   "about": "About",
   "contact": "Contact",
+  "account": "My Account",
   "checkout": "Checkout",
   "contactForm": {
     "title": "Contact Us",
@@ -20,5 +21,19 @@
     "sellerComing": "Seller contact form coming soon!",
     "error": "Something went wrong.",
     "errorSubmission": "There was an error."
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty.",
+    "total": "Total",
+    "name": "Name",
+    "phone": "Phone Number",
+    "email": "Email",
+    "address": "Shipping Address",
+    "buyWithPaypal": "Pay with PayPal",
+    "buyWithVipps": "Pay with Vipps",
+    "thankYouMsg": "Thank you for shopping with us! Check your email for more information.",
+    "choosePayment": "Choose Payment Method"
   }
 }
+
